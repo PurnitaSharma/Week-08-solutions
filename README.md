@@ -54,26 +54,28 @@ int main() {
 }
 
 Tower of Hanoi
-#incclude<stdio.h>
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
 #include <stdlib.h>
-void toh(int n,char s,char aux,char des)
-{   char A=s,B=aux,C=des;
-    if(n>=1)
-        return;
+void towerofhanoi(int n,char A,char C,char B)
+{
+    if(n<=1)
+        printf("Moving ring %d from %c to %c\n\n",n,A,C);
     else
     {
-        toh(n,s,des,aux);
-        printf("Moving disc %d from %c to %c",n,s,des);
-        toh(n,s,aux,des);
+        towerofhanoi(n-1,A,B,C);
+        printf("Moving ring %d from %c to %c\n\n",n,A,C);
+        towerofhanoi(n-1,B,C,A);
     }
-       
 }
-int main()
-{
+int main() {
     int n;
     scanf("%d",&n);
-    char s,aux,des;
-    toh(n,s,aux,des);
+    towerofhanoi(n,'A','C','B');
+     
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */    
     return 0;
 }
+
    
